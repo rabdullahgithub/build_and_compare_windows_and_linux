@@ -6,28 +6,25 @@
   hosts: localhost
   vars:
     my_resource_group: MyResourceGroup
-#    my_vm_name: anspocw2012
-#    my_vn_name: poc-vn
-#    my_sn_name: poc-sn
     winrm_enable_script: SQBuAHYAbwBrAGUALQBFAHgAcAByAGUAcwBzAGkAbwBuACAALQBDAG8AbQBtAGEAbgBkACAAKAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAIABTAHkAcwB0AGUAbQAuAE4AZQB0AC4AVwBlAGIAQwBsAGkAZQBuAHQAKQAuAEQAbwB3AG4AbABvAGEAZABTAHQAcgBpAG4AZwAoACcAaAB0AHQAcABzADoALwAvAHIAYQB3AC4AZwBpAHQAaAB1AGIAdQBzAGUAcgBjAG8AbgB0AGUAbgB0AC4AYwBvAG0ALwBhAG4AcwBpAGIAbABlAC8AYQBuAHMAaQBiAGwAZQAvAGQAZQB2AGUAbAAvAGUAeABhAG0AcABsAGUAcwAvAHMAYwByAGkAcAB0AHMALwBDAG8AbgBmAGkAZwB1AHIAZQBSAGUAbQBvAHQAaQBuAGcARgBvAHIAQQBuAHMAaQBiAGwAZQAuAHAAcwAxACcAKQApADsAIABFAG4AYQBiAGwAZQAtAFcAUwBNAGEAbgBDAHIAZQBkAFMAUwBQACAALQBSAG8AbABlACAAUwBlAHIAdgBlAHIAIAAtAEYAbwByAGMAZQA=
 
   tasks:
   - name: CREATE AZURE STORAGE ACCOUNT
     azure_rm_storageaccount:
-      subscription_id: "{{ my_subscription_id }}"
-      client_id: "{{ my_client_id }}"
-      secret: "{{ my_secret }}"
-      tenant: "{{ my_tenant }}"
+      subscription_id: "{{ AZURE_SUBSCRIPTION_ID }}"
+      client_id: "{{ AZURE_CLIENT_ID }}"
+      secret: "{{ AZURE_SECRET }}"
+      tenant: "{{ AZURE_TENANT }}"
       name: '{{ my_vm_name }}'
       resource_group: "{{ my_resource_group }}"
       account_type: Standard_LRS
 
   - name: PROVSION VIRTUAL HOST
     azure_rm_virtualmachine:
-      subscription_id: "{{ my_subscription_id }}"
-      client_id: "{{ my_client_id }}"
-      secret: "{{ my_secret }}"
-      tenant: "{{ my_tenant }}"
+      subscription_id: "{{ AZURE_SUBSCRIPTION_ID }}"
+      client_id: "{{ AZURE_CLIENT_ID }}"
+      secret: "{{ AZURE_SECRET }}"
+      tenant: "{{ AZURE_TENANT }}"
       admin_username: richard
       admin_password: "{{ my_admin_password }}"
       os_type: Windows
@@ -46,10 +43,10 @@
 
   - name: CREATE AZURE VM EXTENSION TO ENABLE HTTPS WINRM LISTENER
     azure_rm_virtualmachine_extension:
-      subscription_id: "{{ my_subscription_id }}"
-      client_id: "{{ my_client_id }}"
-      secret: "{{ my_secret }}"
-      tenant: "{{ my_tenant }}"
+      subscription_id: "{{ AZURE_SUBSCRIPTION_ID }}"
+      client_id: "{{ AZURE_CLIENT_ID }}"
+      secret: "{{ AZURE_SECRET }}"
+      tenant: "{{ AZURE_TENANT }}"
       name: winrm-extension
       resource_group: "{{ my_resource_group }}"
       virtual_machine_name: "{{ my_vm_name }}"
