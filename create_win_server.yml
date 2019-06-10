@@ -36,7 +36,8 @@
       name: "{{ my_vm_name }}"
       resource_group: "{{ my_resource_group }}"
       state: present
-      vm_size: Standard_D1
+      vm_size: Standard_B2s
+#      vm_size: Standard_D1
       storage_account_name: "{{ my_vm_name }}"
       virtual_network_name: demo-VN
       subnet_name: demo-SN
