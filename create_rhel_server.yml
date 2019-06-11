@@ -9,10 +9,10 @@
   tasks:
   - name: CREATE PUBLIC IP ADDRESS
     azure_rm_publicipaddress:
-      subscription_id: "{{ my_subscription_id }}"
-      client_id: "{{ my_client_id }}"
-      secret: "{{ my_secret }}"
-      tenant: "{{ my_tenant }}"
+      subscription_id: "{{ AZURE_SUBSCRIPTION_ID }}"
+      client_id: "{{ AZURE_CLIENT_ID }}"
+      secret: "{{ AZURE_SECRET }}"
+      tenant: "{{ AZURE_TENANT }}"
       resource_group: myResourceGroup
       allocation_method: Static
       name: myPublicIP
@@ -22,10 +22,10 @@
       msg: "The public IP is {{ output_ip_address.state.ip_address }}."
   - name: CREATE SSH ALLOWING SECURITY GROUP
     azure_rm_securitygroup:
-      subscription_id: "{{ my_subscription_id }}"
-      client_id: "{{ my_client_id }}"
-      secret: "{{ my_secret }}"
-      tenant: "{{ my_tenant }}"
+      subscription_id: "{{ AZURE_SUBSCRIPTION_ID }}"
+      client_id: "{{ AZURE_CLIENT_ID }}"
+      secret: "{{ AZURE_SECRET }}"
+      tenant: "{{ AZURE_TENANT }}"
       resource_group: myResourceGroup
       name: myNetworkSecurityGroup
       rules:
@@ -37,10 +37,10 @@
           direction: Inbound
   - name: CREATE VNIC
     azure_rm_networkinterface:
-      subscription_id: "{{ my_subscription_id }}"
-      client_id: "{{ my_client_id }}"
-      secret: "{{ my_secret }}"
-      tenant: "{{ my_tenant }}"
+      subscription_id: "{{ AZURE_SUBSCRIPTION_ID }}"
+      client_id: "{{ AZURE_CLIENT_ID }}"
+      secret: "{{ AZURE_SECRET }}"
+      tenant: "{{ AZURE_TENANT }}"
       resource_group: myResourceGroup
       name: myNIC
       virtual_network: demo-VN
@@ -49,10 +49,10 @@
       security_group: myNetworkSecurityGroup
   - name: CREATE VM
     azure_rm_virtualmachine:
-      subscription_id: "{{ my_subscription_id }}"
-      client_id: "{{ my_client_id }}"
-      secret: "{{ my_secret }}"
-      tenant: "{{ my_tenant }}"
+      subscription_id: "{{ AZURE_SUBSCRIPTION_ID }}"
+      client_id: "{{ AZURE_CLIENT_ID }}"
+      secret: "{{ AZURE_SECRET }}"
+      tenant: "{{ AZURE_TENANT }}"
       resource_group: myResourceGroup
       name: "{{ my_vm_name }}"
       vm_size: Standard_B2s
