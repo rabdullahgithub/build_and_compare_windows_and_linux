@@ -1,6 +1,7 @@
 ---
  - name: DUMP FACTS
    hosts: all
+   gather_facts: yes
    tasks:
    - name: FACTS
      setup:
