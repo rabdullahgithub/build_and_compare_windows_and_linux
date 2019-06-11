@@ -1,6 +1,6 @@
 ---
  - name: Dump
-   hosts: localhost
+   hosts: all
    tasks:
    - name: FACTS
      setup:
@@ -14,4 +14,3 @@
    - name: DEBUG OUTPUT
      debug:
        msg: serverfacts
-           
