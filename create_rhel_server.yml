@@ -3,6 +3,8 @@
   connection: local
   gather_facts: no
   hosts: localhost
+  vars_files:
+    - /home/richard/ansible/vars/azuresubscription.yml
   vars:
     my_resource_group: MyResourceGroup
 
