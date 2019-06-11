@@ -1,16 +1,19 @@
 ---
- - name: Dump
+ - name: DUMP FACTS
    hosts: all
    tasks:
    - name: FACTS
      setup:
      register: serverfacts
+     when: inventory_hostname == 'winabcde'
    - name: DUMP TO LOCAL HOST FILE
      delegate_to: localhost
      run_once: true
      copy:
        content: "{{ hostvars[inventory_hostname] | to_nice_json }}"
        dest: /tmp/setup-dump.json
+     when: inventory_hostname == 'winabcde'
    - name: DEBUG OUTPUT
      debug:
        msg: serverfacts
+     when: inventory_hostname == 'winabcde'
