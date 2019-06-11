@@ -60,7 +60,7 @@
       ssh_password_enabled: false
       ssh_public_keys:
         - path: /home/richard/.ssh/authorized_keys
-          key_data: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDSVS675Hu7wpHzxfbfsi75f2LS/AMR8jAgIXTFd6VtllFwJGJ1LYMKJc7HHFfwWuTBbzhyY39mDddfKG2qJa5PGZkdPOcaQFNkX+l3EWmBEyi8qq3wBbZUvJKh3GKuzj5rJayUnTOmaV9iCipJSRQV9AJSePg6/9bevPHCE/LX/kEnSATKZZ1/sZFudXCurl34V2hTX03a0F9wKw8prDf2JUBLvPCT3gsdzEInea1ftQZob1rRkDZ83UjplgyCccFvHoPPYNzrlHo+RqdrUoNRMOPTRpjK0xsH5Vf5ZHhBHCIR8w/RrB3sOXJimIaC1dm5qQtMGMI8weyuvOEo9KtX
+          key_data: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCtVxBQ5BD/jPeT5PzGQ48Y/Hc5sfhXmZQGbhhZu6mfewczcTWidIu1OH1tzG01SIYICc8iQv/GiEyta1pzDpLu/bLbxIdLCDOp56SjbkYN+OUwIaeltNOt9hdbReX4PA5qbozj8XLUJE8VWnpzdCRSA+xn0nrsF+36uWUPWVhtCopo0TAEYjgMb2mRmOG/23mbu3wyy8kKGxmYrgjwQfmQ3wP347XlpW93ZWO+IFjtn54NkT3+vFT931xogcpqfyURr9SDi8ohCrtvtwOGIMTU1oFzQTxRJp/B74XTYkcsxm9G5UaO8kjucTFAUItNpKkbuEYDP/37UoO7+aZs2aAl richard@at1
       network_interfaces: myNIC
       image:
         offer: CentOS
