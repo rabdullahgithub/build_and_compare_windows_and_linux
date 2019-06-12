@@ -43,7 +43,7 @@
       subnet_name: demo-SN
 
   - name: CREATE AZURE VM EXTENSION TO ENABLE HTTPS WINRM LISTENER
-    azure_rm_virtualmachineextension:
+    azure_rm_virtualmachine_extension:
       subscription_id: "{{ my_subscription_id }}"
       client_id: "{{ my_client_id }}"
       secret: "{{ my_secret }}"
