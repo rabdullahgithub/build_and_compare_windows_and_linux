@@ -27,6 +27,7 @@
       tenant: "{{ my_tenant }}"
       admin_username: richard
       admin_password: "{{ my_admin_password }}"
+      cert_validation_mode: ignore
       os_type: Windows
       image:
         offer: WindowsServer
@@ -56,22 +57,6 @@
       type_handler_version: 1.9
       settings: '{"commandToExecute": "powershell.exe -ExecutionPolicy ByPass -EncodedCommand {{winrm_enable_script}}"}'
       auto_upgrade_minor_version: true
-      cert_validation_mode: ignore
-
-#  - name: CREATE AZURE VM EXTENSION TO ENABLE HTTPS WINRM LISTENER
-#    azure_rm_virtualmachine_extension:
-#      subscription_id: "{{ my_subscription_id }}"
-#      client_id: "{{ my_client_id }}"
-#      secret: "{{ my_secret }}"
-#      tenant: "{{ my_tenant }}"
-#      name: winrm-extension
-#      resource_group: "{{ my_resource_group }}"
-#      virtual_machine_name: "{{ my_vm_name }}"
-#      publisher: Microsoft.Compute
-#      virtual_machine_extension_type: CustomScriptExtension
-#      type_handler_version: 1.9
-#      settings: '{"commandToExecute": "powershell.exe -ExecutionPolicy ByPass -EncodedCommand {{winrm_enable_script}}"}'
-#      auto_upgrade_minor_version: true
 
   - name: WAIT FOR WINRM TO GO ONLINE
     wait_for:
