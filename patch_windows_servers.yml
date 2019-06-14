@@ -1,0 +1,17 @@
+---
+- name: PATCH WINDOWS SERVER AZURE
+  hosts: all
+  gather_facts: no
+
+  tasks:
+  - name: UPDATE SERVERS
+    win_updates:
+      category_names: SecurityUpdates
+      state: searched
+#      state: installed
+    register: update_count
+    when: inventory_hostname == 'winabc'
+
+  - name: DISPLAY MISSING UPDATE RESULTS
+    debug:
+      msg: "{{ update_count }}"
