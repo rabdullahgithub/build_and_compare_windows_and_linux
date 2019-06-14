@@ -1,5 +1,5 @@
 ---
-- name: AZURE CREATE W2012 R2 SERVER
+- name: AZURE CREATE W2016 SERVER
   connection: local
   gather_facts: no
   #  hosts: all
