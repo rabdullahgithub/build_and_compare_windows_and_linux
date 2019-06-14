@@ -7,13 +7,13 @@
      setup:
      register: serverfacts
      when: inventory_hostname == 'winabc'
-   - name: DUMP TO LOCAL HOST FILE
-     delegate_to: localhost
-     run_once: true
-     copy:
-       content: "{{ hostvars[inventory_hostname] | to_nice_json }}"
-       dest: /tmp/setup-dump.json
-     when: inventory_hostname == 'winabc'
+#   - name: DUMP TO LOCAL HOST FILE
+#     delegate_to: localhost
+#     run_once: true
+#     copy:
+#       content: "{{ hostvars[inventory_hostname] | to_nice_json }}"
+#       dest: /tmp/setup-dump.json
+#     when: inventory_hostname == 'winabc'
    - name: DEBUG OUTPUT
      debug:
        msg: serverfacts
