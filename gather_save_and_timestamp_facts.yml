@@ -1,9 +1,9 @@
 ---
  - name: RETRIEVE FACTS FROM HOSTS
    hosts: all
-   gather_facts: no
+   gather_facts: yes
    tasks:
-   - name: FACTS
+   - name: GATHER FACTS
      setup:
      register: serverfacts
      when: inventory_hostname == 'winabc'
