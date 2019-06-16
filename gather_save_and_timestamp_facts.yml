@@ -1,12 +1,13 @@
 ---
  - name: RETRIEVE FACTS FROM HOSTS
    hosts: all
-   gather_facts: yes
+   gather_facts: true
 
    tasks:
    - name: GATHER FACTS
      setup:
      register: ansible_facts
+     when: inventory_hostname == 'winabc'
 #   - name: OBTAIN REGISTRY INFORMATION
 #     win_reg_stat:
 #       path: HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion
@@ -14,6 +15,6 @@
 #     when: inventory_hostname == 'winabc'
 
    - name: PRINT OUTPUT
-     debug:
-       msg: ansible_facts
-#     when: inventory_hostname == 'winabc'
+     debug: item
+     with_dict: ansible_facts
+     when: inventory_hostname == 'winabc'
