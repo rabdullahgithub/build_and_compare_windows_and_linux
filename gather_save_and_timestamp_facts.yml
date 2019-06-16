@@ -1,20 +1,15 @@
 ---
  - name: RETRIEVE FACTS FROM HOSTS
    hosts: all
-   gather_facts: yes
+   gather_facts: no
+
    tasks:
-   - name: GATHER FACTS
-     setup:
-     register: serverfacts
+   - name: OBTAIN REGISTRY INFORMATION
+     win_reg_stat:
+       path: HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion
+     register: current_version
      when: inventory_hostname == 'winabc'
-#   - name: DUMP TO LOCAL HOST FILE
-#     delegate_to: localhost
-#     run_once: true
-#     copy:
-#       content: "{{ hostvars[inventory_hostname] | to_nice_json }}"
-#       dest: /tmp/setup-dump.json
-#     when: inventory_hostname == 'winabc'
-   - name: DEBUG OUTPUT
+   - name: PRINT OUTPUT
      debug:
-       msg: serverfacts
+       msg: current_version
      when: inventory_hostname == 'winabc'
