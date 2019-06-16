@@ -16,4 +16,4 @@
    - name: PRINT OUTPUT
      debug:
        msg: ansible_facts
-     when: inventory_hostname == 'winabc'
+#     when: inventory_hostname == 'winabc'
