@@ -15,6 +15,6 @@
 #     when: inventory_hostname == 'winabc'
 
    - name: PRINT OUTPUT
-     debug: item
+     debug:
      with_dict: ansible_facts
      when: inventory_hostname == 'winabc'
