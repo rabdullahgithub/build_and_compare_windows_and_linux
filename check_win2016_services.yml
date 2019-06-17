@@ -4,22 +4,35 @@
    gather_facts: false
 
    tasks:
-   - name: GATHER FACTS
-     win_firewall:
-       state: enabled
-       profiles:
-       - Domain
-       - Private
-       - Public
-     register: firewall_status
+   - name: CHECK IF WINDOWS FIREWALL IS RUNNING
+     win_service:
+       name: MpsSvc
+     register: MpsSvc_info
      when: inventory_hostname == 'winabc'
-#   - name: OBTAIN REGISTRY INFORMATION
-#     win_reg_stat:
-#       path: HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion
-#     register: current_version
-#     when: inventory_hostname == 'winabc'
+
+   - name: CHECK IF WINDOWS EVENTLOG IS RUNNING
+     win_service:
+       name: EventLog
+     register: EventLog_info
+     when: inventory_hostname == 'winabc'
+
+   - name: CHECK IF WINDOWS UPDATE IS RUNNING
+     win_service:
+       name: wuauserv
+     register: wuauserv_info
+     when: inventory_hostname == 'winabc'
 
    - name: PRINT OUTPUT
      debug:
-       msg: firewall_status
+       msg: MpsSvc_info
+     when: inventory_hostname == 'winabc'
+
+   - name: PRINT OUTPUT
+     debug:
+       msg: EventLog_info
+     when: inventory_hostname == 'winabc'
+
+   - name: PRINT OUTPUT
+     debug:
+       msg: wuauserv
      when: inventory_hostname == 'winabc'
