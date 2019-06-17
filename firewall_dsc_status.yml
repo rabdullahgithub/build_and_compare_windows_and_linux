@@ -1,0 +1,25 @@
+---
+ - name: IS FIREWALL AT DSC
+   hosts: all
+   gather_facts: false
+
+   tasks:
+   - name: GATHER FACTS
+     win_firewall:
+       state: enabled
+       profiles:
+       - Domain
+       - Private
+       - Public
+     register: firewall_status
+     when: inventory_hostname == 'winabc'
+#   - name: OBTAIN REGISTRY INFORMATION
+#     win_reg_stat:
+#       path: HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion
+#     register: current_version
+#     when: inventory_hostname == 'winabc'
+
+   - name: PRINT OUTPUT
+     debug:
+     msg: firewall_status
+     when: inventory_hostname == 'winabc'
