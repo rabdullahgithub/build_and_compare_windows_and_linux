@@ -1,0 +1,45 @@
+#This playbook checks the state of the following services:
+#MpsSvc_info (Windows Firewall)
+#---> EventLog (Windows Event Log)
+#---> wuauserv (Windows Update)
+---
+- name: SERVICE CHECK, PRINT AND RESTORE
+  hosts: all
+  gather_facts: false
+
+  tasks:
+  - name: CHECK IF WINDOWS UPDATE IS RUNNING
+    win_service:
+      name: wuauserv
+    register: wuauserv_info
+    when: inventory_hostname == 'winabc'
+  - name: CHECK IF WINDOWS UPDATE IS RUNNING
+    win_service:
+      name: EventLog
+    register: EventLog_info
+    when: inventory_hostname == 'winabc'
+
+  - name: PRINT UPDATE SERVICES OUTPUT
+    debug:
+      var: EventLog_info.state
+    when: inventory_hostname == 'winabc'
+  - name: PRINT UPDATE SERVICES OUTPUT
+    debug:
+      var: EventLog_info.state
+    when: inventory_hostname == 'winabc'
+
+  - name: START WINDOWS UPDATE
+    win_service:
+      name: wuauserv
+      state: started
+    when:
+      - inventory_hostname == 'winabc'
+      - wuauserv_info.state == 'stopped'
+
+  - name: START WINDOWS UPDATE
+    win_service:
+      name: EventLog
+      state: started
+    when:
+      - inventory_hostname == 'winabc'
+      - EventLog_info.state == 'stopped'
