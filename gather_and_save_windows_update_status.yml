@@ -4,7 +4,7 @@
 #wuauserv (Windows Update)
 ---
 - name: WINDOWS UPDATE SERVICE STATUS
-  hosts: windows
+  hosts: all
   gather_facts: true
 
   tasks:
