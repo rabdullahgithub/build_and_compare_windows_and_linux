@@ -1,0 +1,17 @@
+#Windows service names
+#MpsSvc_info (Windows Firewall)
+#EventLog (Windows Event Log)
+#wuauserv (Windows Update)
+---
+- name: WINDOWS UPDATE SERVICE STATUS
+  hosts: windows
+  gather_facts: true
+
+  tasks:
+  - name: CHECK IF WINDOWS UPDATE IS RUNNING
+    win_service:
+      name: wuauserv
+    register: wuauserv_info
+
+  - name: WRITE STATE OUTPUT TO FILE
+    local_action: shell echo "Windows Update State,{{ wuauserv_info.state }},{{ ansible_date_time.date }}" >> /home/richard/output/stateinfo
