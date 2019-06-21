@@ -1,7 +1,20 @@
-#This playbook checks the state of the following services:
-#MpsSvc_info (Windows Firewall)
+#This playbook operates on a network accessible Windows Server and checks the following services:
 #---> EventLog (Windows Event Log)
 #---> wuauserv (Windows Update)
+
+#The following variables need to be defined in Ansible Tower or Ansible Engine Playbook/Inventory
+#ansible_connection: winrm
+#ansible_password: ******************
+#ansible_port: 5986
+#ansible_user: ******************
+#ansible_winrm_operation_timeout_sec: 60
+#ansible_winrm_read_timeout_sec: 70
+#ansible_winrm_server_cert_validation: ignore
+#ansible_winrm_transport: basic
+
+#This playbook uses an Azure dynamic inventory on Ansible Tower
+#Logic is included to only operate on a hostname called 'winabc' which can be removed
+
 ---
 - name: SERVICE CHECK, PRINT AND RESTORE
   hosts: all
