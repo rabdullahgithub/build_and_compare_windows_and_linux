@@ -13,22 +13,24 @@
       name: wuauserv
     register: wuauserv_info
     when: inventory_hostname == 'winabc'
-  - name: CHECK IF WINDOWS UPDATE IS RUNNING
+
+  - name: CHECK IF WINDOWS EVENTLOG IS RUNNING
     win_service:
       name: EventLog
     register: EventLog_info
     when: inventory_hostname == 'winabc'
 
-  - name: PRINT UPDATE SERVICES OUTPUT
+  - name: PRINT SERVICE STATE INFO
     debug:
-      var: EventLog_info.state
-    when: inventory_hostname == 'winabc'
-  - name: PRINT UPDATE SERVICES OUTPUT
-    debug:
-      var: EventLog_info.state
+       msg: Host {{inventory_hostname}} Service {{EventLog_out.display_name}} is {{EventLog_out.state}}
     when: inventory_hostname == 'winabc'
 
-  - name: START WINDOWS UPDATE
+  - name: PRINT SERVICE STATE INFO
+    debug:
+       msg: Host {{inventory_hostname}} Service {{EventLog_out.display_name}} is {{EventLog_out.state}}
+    when: inventory_hostname == 'winabc'
+
+  - name: START WINDOWS UPDATE  IF NECESSARY
     win_service:
       name: wuauserv
       state: started
@@ -36,7 +38,7 @@
       - inventory_hostname == 'winabc'
       - wuauserv_info.state == 'stopped'
 
-  - name: START WINDOWS UPDATE
+  - name: START WINDOWS EVENTLOG IF NECESSARY
     win_service:
       name: EventLog
       state: started
