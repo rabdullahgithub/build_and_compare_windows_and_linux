@@ -1,3 +1,12 @@
+#This playbook creates a RHEL 7.6 Server in Microsoft AZURE
+#Prerequisite: Virtual network and subnet which have arbitrary names: demo-VN demo-SN in this Playbook
+#The following variables need to be defined in Ansible Tower or Ansible Engine Playbook/Inventory
+#my_subscription_id (identify with command "az ad sp create-for-rbac" in azure bash)
+#my_client_id (identify with command "az ad sp create-for-rbac" in azure bash)
+#my_secret (identify with command "az ad sp create-for-rbac" in azure bash)
+#my_tenant (identify with command "az ad sp create-for-rbac" in azure bash)
+#my_vm_name (arbitrary virtual machine name)
+#Although not defined as variables other Azure resources such as resource_group needs to be available in azure_vm
 ---
 - name: CREATE AZURE RHEL 7.6 SERVER
   connection: local
