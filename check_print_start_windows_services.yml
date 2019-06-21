@@ -22,15 +22,15 @@
 
   - name: PRINT SERVICE STATE INFO
     debug:
-       msg: Host {{inventory_hostname}} Service {{EventLog_out.display_name}} is {{EventLog_out.state}}
+       msg: Host {{inventory_hostname}} Service {{wuauserv_info.display_name}} is {{wuauserv_info.state}}
     when: inventory_hostname == 'winabc'
 
   - name: PRINT SERVICE STATE INFO
     debug:
-       msg: Host {{inventory_hostname}} Service {{EventLog_out.display_name}} is {{EventLog_out.state}}
+       msg: Host {{inventory_hostname}} Service {{EventLog_info.display_name}} is {{EventLog_info.state}}
     when: inventory_hostname == 'winabc'
 
-  - name: START WINDOWS UPDATE  IF NECESSARY
+  - name: START WINDOWS UPDATE IF NECESSARY
     win_service:
       name: wuauserv
       state: started
